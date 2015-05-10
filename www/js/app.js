@@ -24,15 +24,7 @@ angular.module('starter', ['ionic' ,'starter.controllers','starter.directives','
 			event.preventDefault();
 			}, 100) 
  
-			if(window.Connection) {
-                if(navigator.connection.type == Connection.NONE) {
-                    $ionicPopup.confirm({
-                        title: "Internet Disconnected",
-                        content: "The internet is disconnected on your device. Please Connect Internet"
-                    })
-                    
-                }
-            }
+		
   });
 })
 
