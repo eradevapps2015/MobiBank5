@@ -11,14 +11,11 @@ angular.module('starter.controllers', [])
 	document.addEventListener("deviceready", onDeviceReady, false);
         // device APIs are available
         function onDeviceReady() {
-           if(window.Connection) {
-                if(navigator.connection.type == Connection.NONE) {
-                    $ionicPopup.confirm({
-                        title: "Internet Disconnected",
-                        content: "The internet is disconnected on your device. Please Connect Internet"
-                    })
-                    
-                }
+        	  alert("cocccccccccccc");
+           if(navigator.network.connection.type == Connection.NONE){
+                alert("nocon");
+            }else{
+                alert("yescon");
             }
         }
         
