@@ -19,6 +19,9 @@ xmlns:cdv="http://cordova.apache.org/ns/1.0"
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
+  <feature name="NetworkStatus">
+    <param name="ios-package" value="CDVConnection" />
+</feature>
   
   <!-- Plugins -->
 
