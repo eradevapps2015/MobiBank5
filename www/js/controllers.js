@@ -5,7 +5,7 @@ angular.module('starter.controllers', [])
 	// **************************************Sign In Controller*******************************************************
 	// **************************************Sign In Controller*******************************************************
 	
-	.controller('SignInCtrl', function($scope, $state, $http, $rootScope, $ionicLoading, $timeout,$ionicPopup,$filter,$cordovaSQLite,$cordovaDevice) {
+	.controller('SignInCtrl', function($ionicPlatform,$scope, $state, $http, $rootScope, $ionicLoading, $timeout,$ionicPopup,$filter,$cordovaSQLite,$cordovaDevice) {
 	//$urlRouterProvider.otherwise("/welcome/home");
 	
 	
@@ -34,7 +34,19 @@ angular.module('starter.controllers', [])
         });
         
         //Begin Internet Connection
-      
+      $ionicPlatform.registerBackButtonAction(function (event) {
+			event.preventDefault();
+			}, 100) 
+ 
+			if(window.Connection) {
+                if(navigator.connection.type == Connection.NONE) {
+                    $ionicPopup.confirm({
+                        title: "Internet Disconnected",
+                        content: "The internet is disconnected on your device. Please Connect Internet Cotrollerrrrr"
+                    })
+                    
+                }
+            }
             //End internet connection
  })
  
