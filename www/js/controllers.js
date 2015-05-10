@@ -5,7 +5,7 @@ angular.module('starter.controllers', [])
 	// **************************************Sign In Controller*******************************************************
 	// **************************************Sign In Controller*******************************************************
 	
-	.controller('SignInCtrl', function($scope,$cordovaNetwork, $state, $http, $rootScope, $ionicLoading, $timeout,$ionicPopup,$filter,$cordovaSQLite,$cordovaDevice) {
+	.controller('SignInCtrl', function($scope, $state, $http, $rootScope, $ionicLoading, $timeout,$ionicPopup,$filter,$cordovaSQLite,$cordovaDevice) {
 	//$urlRouterProvider.otherwise("/welcome/home");
 	
 	
@@ -34,24 +34,7 @@ angular.module('starter.controllers', [])
         });
         
         //Begin Internet Connection
-        var type = $cordovaNetwork.getNetwork()
-
-    var isOnline = $cordovaNetwork.isOnline()
-
-    var isOffline = $cordovaNetwork.isOffline()
-
-
-    // listen for Online event
-    $rootScope.$on('$cordovaNetwork:online', function(event, networkState){
-      var onlineState = networkState;
-      alert("Internet Connection!");
-    })
-
-    // listen for Offline event
-    $rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
-      var offlineState = networkState;
-      alert("No Internet !");
-    })
+      
             //End internet connection
  })
  
