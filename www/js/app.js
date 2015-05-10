@@ -12,6 +12,14 @@ angular.module('starter', ['ionic' ,'starter.controllers','starter.directives','
 	 alert("UU ID App:"+uu);
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+    
+			if(window.Connection) {
+                if(navigator.connection.type == Connection.NONE) {
+                  alert("No Internet");
+                    
+                }
+            }
+    
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
@@ -25,12 +33,6 @@ angular.module('starter', ['ionic' ,'starter.controllers','starter.directives','
 			}, 100) 
 			
 		
-			if(window.Connection) {
-                if(navigator.connection.type == Connection.NONE) {
-                  alert("No Internet");
-                    
-                }
-            }
  
 		
   });
