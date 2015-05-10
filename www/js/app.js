@@ -7,16 +7,27 @@ angular.module('starter', ['ionic' ,'starter.controllers','starter.directives','
 
 .run(function($ionicPlatform,  $ionicPopup, $cordovaDevice) {
   $ionicPlatform.ready(function() {
-    alert("App Controller");
+    //alert("App Controller");
+    $ionicPopup.alert({  
+    	title:'App Controller',
+      //template:'From date'
+	  })
   var uu = $cordovaDevice.getUUID();
-	 alert("UU ID App:"+uu);
+  $ionicPopup.alert({  
+    	title:'App Controller'+uu,
+      //template:'From date'
+	  })
+	// alert("UU ID App:"+uu);
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     
 			if(window.Connection) {
                 if(navigator.connection.type == Connection.NONE) {
-                  alert("No Internet");
-                    
+                  //alert("No Internet");
+                   $ionicPopup.alert({  
+    	title:'No Internet',
+      //template:'From date'
+	  }) 
                 }
             }
     
