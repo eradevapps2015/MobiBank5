@@ -5,7 +5,7 @@ angular.module('starter.controllers', [])
 	// **************************************Sign In Controller*******************************************************
 	// **************************************Sign In Controller*******************************************************
 	
-	.controller('SignInCtrl', function($scope, $state, $http, $rootScope, $ionicLoading, $timeout,$ionicPopup,$filter,$cordovaSQLite,$cordovaDevice) {
+	.controller('SignInCtrl', function($scope,$cordovaNetwork, $state, $http, $rootScope, $ionicLoading, $timeout,$ionicPopup,$filter,$cordovaSQLite,$cordovaDevice) {
 	//$urlRouterProvider.otherwise("/welcome/home");
 	
 	
@@ -16,7 +16,7 @@ angular.module('starter.controllers', [])
 	 document.addEventListener('deviceready', function () {
 	// alert("controller");
 	  $scope.uuid = $cordovaDevice.getUUID();
-	  //alert("Deviec uuid"+ $scope.uuid);
+	  alert("Deviec uuid"+ $scope.uuid);
 	db = $cordovaSQLite.openDB({ name: "bankasiadb.db" });
     $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS useridinfo (user_id text)");
 	     var query = "SELECT user_id FROM useridinfo";
@@ -34,15 +34,24 @@ angular.module('starter.controllers', [])
         });
         
         //Begin Internet Connection
-        	if(window.Connection) {
-                if(navigator.connection.type == Connection.NONE) {
-                    $ionicPopup.confirm({
-                        title: "Internet Disconnected",
-                        content: "The internet is disconnected on your device. Please Connect Internet"
-                    })
-                    
-                }
-            }
+        var type = $cordovaNetwork.getNetwork()
+
+    var isOnline = $cordovaNetwork.isOnline()
+
+    var isOffline = $cordovaNetwork.isOffline()
+
+
+    // listen for Online event
+    $rootScope.$on('$cordovaNetwork:online', function(event, networkState){
+      var onlineState = networkState;
+      alert("Internet Connection!");
+    })
+
+    // listen for Offline event
+    $rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
+      var offlineState = networkState;
+      alert("No Internet !");
+    })
             //End internet connection
  })
  
