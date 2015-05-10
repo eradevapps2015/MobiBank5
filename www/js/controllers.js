@@ -14,9 +14,9 @@ angular.module('starter.controllers', [])
 	// *****Begin Show User ID**********
 
 	 document.addEventListener('deviceready', function () {
-	 alert("controller");
+	// alert("controller");
 	  $scope.uuid = $cordovaDevice.getUUID();
-	  alert("Deviec uuid"+ $scope.uuid);
+	  //alert("Deviec uuid"+ $scope.uuid);
 	db = $cordovaSQLite.openDB({ name: "bankasiadb.db" });
     $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS useridinfo (user_id text)");
 	     var query = "SELECT user_id FROM useridinfo";
@@ -32,6 +32,18 @@ angular.module('starter.controllers', [])
         }, function (err) {
             console.error(err);
         });
+        
+        //Begin Internet Connection
+        	if(window.Connection) {
+                if(navigator.connection.type == Connection.NONE) {
+                    $ionicPopup.confirm({
+                        title: "Internet Disconnected",
+                        content: "The internet is disconnected on your device. Please Connect Internet"
+                    })
+                    
+                }
+            }
+            //End internet connection
  })
  
  
