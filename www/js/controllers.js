@@ -8,9 +8,7 @@ angular.module('starter.controllers', [])
 	.controller('SignInCtrl', function($ionicPlatform,$scope, $state, $http, $rootScope, $ionicLoading, $timeout,$ionicPopup,$filter,$cordovaSQLite,$cordovaDevice) {
 	//$urlRouterProvider.otherwise("/welcome/home");
 	
-document.addEventListener("deviceready", function(){
-      alert("123");
- },true);
+
         
 
 /*
