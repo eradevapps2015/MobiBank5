@@ -12,7 +12,7 @@ angular.module('starter.controllers', [])
 
 
 	// *****Begin Show User ID**********
-/*
+
 	 document.addEventListener('deviceready', function () {
 	 //alert("controller");
 	  $scope.uuid = $cordovaDevice.getUUID();
@@ -33,7 +33,7 @@ angular.module('starter.controllers', [])
             console.error(err);
         });
  })
- */
+ 
  
 	// *****End Show User ID**********
   	$rootScope.getServerIp='http://202.40.190.14:8084/'  //For Test
@@ -227,9 +227,9 @@ angular.module('starter.controllers', [])
 							}); 
 												
 													 
-								$state.go('app.welcome');
+							//	$state.go('app.welcome');
 								
-								/*
+								
 								//*************Begin Save User ID************
 							
 										 var query = "SELECT user_id FROM useridinfo where user_id=?";
@@ -294,7 +294,7 @@ angular.module('starter.controllers', [])
 										});
 								
 								//***********End Save User ID****************
-								*/
+								
 								
 								
 												});  
