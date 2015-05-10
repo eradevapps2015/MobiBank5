@@ -14,7 +14,7 @@ angular.module('starter.controllers', [])
 	// *****Begin Show User ID**********
 
 	 document.addEventListener('deviceready', function () {
-	 //alert("controller");
+	 alert("controller");
 	  $scope.uuid = $cordovaDevice.getUUID();
 	  alert("Deviec uuid"+ $scope.uuid);
 	db = $cordovaSQLite.openDB({ name: "bankasiadb.db" });
