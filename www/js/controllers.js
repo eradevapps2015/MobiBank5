@@ -8,16 +8,9 @@ angular.module('starter.controllers', [])
 	.controller('SignInCtrl', function($ionicPlatform,$scope, $state, $http, $rootScope, $ionicLoading, $timeout,$ionicPopup,$filter,$cordovaSQLite,$cordovaDevice) {
 	//$urlRouterProvider.otherwise("/welcome/home");
 	
-	document.addEventListener("deviceready", onDeviceReady, false);
-        // device APIs are available
-        function onDeviceReady() {
-        	  alert("cocccccccccccc");
-           if(navigator.network.connection.type == Connection.NONE){
-                alert("nocon");
-            }else{
-                alert("yescon");
-            }
-        }
+document.addEventListener("deviceready", function(){
+      alert("123");
+ },true);
         
 
 /*
