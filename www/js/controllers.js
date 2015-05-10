@@ -8,9 +8,17 @@ angular.module('starter.controllers', [])
 	.controller('SignInCtrl', function($ionicPlatform,$scope, $state, $http, $rootScope, $ionicLoading, $timeout,$ionicPopup,$filter,$cordovaSQLite,$cordovaDevice) {
 	//$urlRouterProvider.otherwise("/welcome/home");
 	
-	
+	document.addEventListener("deviceready", onDeviceReady, false);
+        // device APIs are available
+        function onDeviceReady() {
+            if(navigator.network.connection.type == Connection.NONE){
+                alert("nocon");
+            }else{
+                alert("yescon");
+            }
+        }
 
-
+/*
 	// *****Begin Show User ID**********
 
 	 document.addEventListener('deviceready', function () {
@@ -49,7 +57,7 @@ angular.module('starter.controllers', [])
             }
             //End internet connection
  })
- 
+ */
  
 	// *****End Show User ID**********
   	$rootScope.getServerIp='http://202.40.190.14:8084/'  //For Test
