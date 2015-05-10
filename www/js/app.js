@@ -5,9 +5,11 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic' ,'starter.controllers','starter.directives','starter.services','ngCordova'])
 
-.run(function($ionicPlatform,  $ionicPopup) {
+.run(function($ionicPlatform,  $ionicPopup, $cordovaDevice) {
   $ionicPlatform.ready(function() {
-  //alert("app controller");
+    alert("App Controller");
+  var uu = $cordovaDevice.getUUID();
+	  alert("UU ID :"+uu);
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
