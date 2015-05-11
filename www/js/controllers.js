@@ -138,10 +138,10 @@ document.addEventListener("deviceready", function() {
 	
 
 		$scope.user = { uname:'era@mybank.com'};
-		alert("Insert Login");
+	
 
 			 $scope.login = function(user) {
-			 	
+			 		alert("Insert Login");
 			 	db.transaction(function(tx) {       
 			tx.executeSql("select user_id from user_info where user_id=? ;", [user.uname], function(tx, res) {
 				 if(res.rows.length > 0) {
