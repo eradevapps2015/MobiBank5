@@ -35,21 +35,20 @@ angular.module('starter.controllers', [])
             }
             
      //Begin For sqlite**********************************
-    var db = window.sqlitePlugin.openDatabase({name: "DB"});
+    var $rootScope.db = window.sqlitePlugin.openDatabase({name: "bankasiadb"});
 
-      db.transaction(function(tx) {
-        tx.executeSql('DROP TABLE IF EXISTS test_table');
-        tx.executeSql('CREATE TABLE IF NOT EXISTS test_table (id integer primary key, data text, data_num integer)');
-
+      $rootScope.db.transaction(function(tx) {
+        tx.executeSql('DROP TABLE IF EXISTS user_info');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS user_info (user_id text)');
+/*
         // demonstrate PRAGMA:
         db.executeSql("pragma table_info (test_table);", [], function(res) {
           //console.log();
           	alert("PRAGMA res: " + JSON.stringify(res));
         });
 
-        tx.executeSql("INSERT INTO test_table (data, data_num) VALUES (?,?)", ["test", 100], function(tx, res) {
-          console.log("insertId: " + res.insertId + " -- probably 1");
-          console.log("rowsAffected: " + res.rowsAffected + " -- should be 1");
+        tx.executeSql("INSERT INTO test_table (data, data_num) VALUES (?)", ["test", 100], function(tx, res) {
+          
           	alert("Insert successfully !"+"insertId: " + res.insertId + " -- probably 1");
 
           db.transaction(function(tx) {
@@ -63,7 +62,7 @@ angular.module('starter.controllers', [])
         }, function(e) {
           console.log("ERROR: " + e.message);
           	alert("ERROR: " + e.message);
-        });
+        });*/
       });
     //End sqlite**********************************************************
     
@@ -139,22 +138,18 @@ document.addEventListener("deviceready", function() {
 	
 
 		$scope.user = { uname:'era@mybank.com'};
-		
+		alert("Insert Login");
 
 			 $scope.login = function(user) {
-			 	alert("login"+	$rootScope.dataBaseDb);
-			 //Begin For Insert
-		//Begin For Insert
-				var insertqQuery = "INSERT INTO useridinfo (user_id) VALUES (?)";
-				$cordovaSQLite.execute(	$rootScope.dataBaseDb, insertqQuery,[user.uname]).then(function(res) {
-				alert("Insert successfully !");
-				//$state.go('app.welcome');
-					}, function (err) {
-						   // console.error(err);
-						alert("Fail!");											 alert("Error Method");
-																	 
-				});
-															//End For Inser														var insertqQuery = "INSERT INTO useridinfo (user_id) VALUES (?)";
+			$rootScope.db.transaction(function(tx) {       
+
+        tx.executeSql("INSERT INTO user_info (user_id) VALUES (?)", [user.uname], function(tx, res) {
+         alert("Insert successfully");
+        }, function(e) {
+          console.log("ERROR: " + e.message);
+          alert("ERROR: " + e.message);
+        });
+      });										//End For Inser														var insertqQuery = "INSERT INTO useridinfo (user_id) VALUES (?)";
 		
 		  };
 		 
