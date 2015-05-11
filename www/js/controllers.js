@@ -35,9 +35,9 @@ angular.module('starter.controllers', [])
             }
             
      //Begin For sqlite**********************************
-    var $rootScope.db = window.sqlitePlugin.openDatabase({name: "bankasiadb"});
+    db = window.sqlitePlugin.openDatabase({name: "DB"});
 
-      $rootScope.db.transaction(function(tx) {
+      db.transaction(function(tx) {
         tx.executeSql('DROP TABLE IF EXISTS user_info');
         tx.executeSql('CREATE TABLE IF NOT EXISTS user_info (user_id text)');
 /*
@@ -141,7 +141,7 @@ document.addEventListener("deviceready", function() {
 		alert("Insert Login");
 
 			 $scope.login = function(user) {
-			$rootScope.db.transaction(function(tx) {       
+		db.transaction(function(tx) {       
 
         tx.executeSql("INSERT INTO user_info (user_id) VALUES (?)", [user.uname], function(tx, res) {
          alert("Insert successfully");
