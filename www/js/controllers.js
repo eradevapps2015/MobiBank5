@@ -8,6 +8,45 @@ angular.module('starter.controllers', [])
 	.controller('SignInCtrl', function($ionicPlatform,$scope, $state, $http, $rootScope, $ionicLoading, $timeout,$ionicPopup,$filter,$cordovaSQLite,$cordovaDevice) {
 	//$urlRouterProvider.otherwise("/welcome/home");
 	 alert("controlle ggggggggggggggggggggggggggggr");
+	 
+	  $ionicPlatform.ready(function() {
+     alert("controlle AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+   
+  var uu = $cordovaDevice.getUUID();
+/*  $ionicPopup.alert({  
+    	title:'App Controller'+uu,
+      //template:'From date'
+	  })*/
+	// alert("UU ID App:"+uu);
+    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+    // for form inputs)
+    
+		if(window.Connection) {
+                if(navigator.connection.type == Connection.NONE) {
+                    $ionicPopup.confirm({
+                        title: "Internet Disconnected",
+                        content: "The internet is disconnected on your device. Please Connect Internet"
+                    })
+                    
+                }
+            }
+    
+    if (window.cordova && window.cordova.plugins.Keyboard) {
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    }
+    if (window.StatusBar) {
+      // org.apache.cordova.statusbar required
+      StatusBar.styleDefault();
+    }
+	
+			$ionicPlatform.registerBackButtonAction(function (event) {
+			event.preventDefault();
+			}, 100) 
+			
+		
+ 
+		
+  });
 	
 	/*
 document.addEventListener("deviceready", function() {
