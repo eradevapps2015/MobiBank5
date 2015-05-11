@@ -11,7 +11,7 @@ angular.module('starter.controllers', [])
 	 //alert("controlle ggggggggggggggggggggggggggggr");
 	 
 	  $ionicPlatform.ready(function() {
-    alert("controlle AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+   
   
   var uu = $cordovaDevice.getUUID();
   $ionicPopup.alert({  
