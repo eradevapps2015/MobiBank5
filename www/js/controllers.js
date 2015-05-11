@@ -28,6 +28,7 @@ angular.module('starter.controllers', [])
 	     var query = "SELECT user_id FROM useridinfo";
 	     alert("ddddddddddd: "+db);
         $cordovaSQLite.execute(db, query).then(function(res) {
+        	 alert("gggg: "+db);
             if(res.rows.length > 0) {
 			
               	
@@ -35,6 +36,7 @@ angular.module('starter.controllers', [])
 					
             } else {
                 console.log("No results found");
+                	 alert("No results found");
             }
         }, function (err) {
             console.error(err);
@@ -126,6 +128,8 @@ document.addEventListener("deviceready", function() {
 		
 
 			 $scope.login = function(user) {
+			 	alert("login"+db);
+			 	
 								 var query = "SELECT user_id FROM useridinfo where user_id=?";
 										  $cordovaSQLite.execute(db, query,[user.uname]).then(function(res) {
 											if(res.rows.length > 0) {			
