@@ -21,13 +21,13 @@ angular.module('starter', ['ionic' ,'starter.controllers','starter.directives','
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     
-			if(window.Connection) {
+		if(window.Connection) {
                 if(navigator.connection.type == Connection.NONE) {
-                  //alert("No Internet");
-                   $ionicPopup.alert({  
-    	title:'No Internet',
-      //template:'From date'
-	  }) 
+                    $ionicPopup.confirm({
+                        title: "Internet Disconnected",
+                        content: "The internet is disconnected on your device. Please Connect Internet"
+                    })
+                    
                 }
             }
     
