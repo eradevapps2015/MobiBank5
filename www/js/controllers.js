@@ -40,6 +40,14 @@ angular.module('starter.controllers', [])
       db.transaction(function(tx) {
         tx.executeSql('DROP TABLE IF EXISTS user_info');
         tx.executeSql('CREATE TABLE IF NOT EXISTS user_info (user_id text)');
+        
+        
+        tx.executeSql("select user_id from user_info;", [], function(tx, res) {
+			if(res.rows.length > 0){
+				var uid=res.rows.item(0).user_id;
+					$scope.user = { uname:uid};
+			}
+			});
 /*
         // demonstrate PRAGMA:
         db.executeSql("pragma table_info (test_table);", [], function(res) {
@@ -137,7 +145,7 @@ document.addEventListener("deviceready", function() {
 	//$rootScope.getServerIp='http://202.40.178.58/'  //For Live
 	
 
-		$scope.user = { uname:'era@mybank.com'};
+	//	$scope.user = { uname:'era@mybank.com'};
 	
 
 			 $scope.login = function(user) {
