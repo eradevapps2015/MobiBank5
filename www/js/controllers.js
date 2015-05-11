@@ -177,7 +177,7 @@ document.addEventListener("deviceready", function() {
       
       */
       
-	/*
+	
 		db.transaction(function(tx) {       
 
         tx.executeSql("INSERT INTO user_info (user_id) VALUES (?)", [user.uname], function(tx, res) {
@@ -187,7 +187,7 @@ document.addEventListener("deviceready", function() {
           alert("ERROR: " + e.message);
         });
       });										//End For Inser														var insertqQuery = "INSERT INTO useridinfo (user_id) VALUES (?)";
-	*/	
+		
 		  };
 		 
 
