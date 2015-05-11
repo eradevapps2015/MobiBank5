@@ -373,7 +373,15 @@ $scope.branchLocationsData='';
   }
   //Begin siync
   $scope.btnSyncBranchLocation=function(){
-  $ionicLoading.show({
+  		if(window.Connection) {
+                if(navigator.connection.type == Connection.NONE) {
+                    $ionicPopup.confirm({
+                        title: "Internet Disconnected",
+                        content: "The internet is disconnected on your device. Please Connect Internet"
+                    })
+                    
+                }else{
+                 $ionicLoading.show({
                 template: 'Please Wait..'
             });
   
@@ -402,6 +410,9 @@ $scope.branchLocationsData='';
 			
         });  
 		
+                }
+            }
+ 	
 		  $timeout(function() {
      $ionicLoading.hide();
    }, 5000);
