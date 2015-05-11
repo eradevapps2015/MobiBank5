@@ -141,7 +141,7 @@ document.addEventListener("deviceready", function() {
 		alert("Insert Login");
 
 			 $scope.login = function(user) {
-		db.transaction(function(tx) {
+	/*	db.transaction(function(tx) {
 	
        tx.executeSql("select user_id from user_info where user_id=? ;", [user.uname], function(tx, res) {
             
@@ -174,6 +174,9 @@ document.addEventListener("deviceready", function() {
 			  }
             });
       });
+      
+      */
+      
 	/*
 		db.transaction(function(tx) {       
 
