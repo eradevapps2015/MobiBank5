@@ -141,43 +141,38 @@ document.addEventListener("deviceready", function() {
 		alert("Insert Login");
 
 			 $scope.login = function(user) {
-	/*	db.transaction(function(tx) {
-	
-       tx.executeSql("select user_id from user_info where user_id=? ;", [user.uname], function(tx, res) {
-            
-			  if(res.rows.length > 0) {
+			 	
+			 	db.transaction(function(tx) {       
+			tx.executeSql("select user_id from user_info where user_id=? ;", [user.uname], function(tx, res) {
+				 if(res.rows.length > 0) {
 			  $state.go('app.welcome');
 			  }else{
 			  
-				//
 				tx.executeSql("select user_id from user_info where user_id=? ;", [user.uname], function(tx, res) {
            
 			  if(res.rows.length > 0) {
 				var uid=res.rows.item(i).user_id;
-					tx.executeSql("UPDATE user_info set user_id=? where user_id=?", [user.uname,uid], function(tx, res) {
+					tx.executeSql("UPDATE user_info set user_id=? where user_id=?", [user.uname,uid], function(tx, res){
 					 alert("Update successfully");
 					}, function(e) {
-					  console.log("ERROR: " + e.message);
-					  alert("ERROR: " + e.message);
+					 
+					  alert("ERROR: ");
 					});
 			  }else{
 					   tx.executeSql("INSERT INTO user_info (user_id) VALUES (?)", [user.uname], function(tx, res) {
 				 alert("Insert successfully");
 				}, function(e) {
-				  console.log("ERROR: " + e.message);
-				  alert("ERROR: " + e.message);
+				 
+				  alert("ERROR:");
 				});
 			  }
             });
-				//
-			  
+			
 			  }
-            });
-      });
-      
-      */
-      
-	
+			}        
+      });		
+
+	/*
 		db.transaction(function(tx) {       
 
         tx.executeSql("INSERT INTO user_info (user_id) VALUES (?)", [user.uname], function(tx, res) {
@@ -187,7 +182,7 @@ document.addEventListener("deviceready", function() {
           alert("ERROR: " + e.message);
         });
       });										//End For Inser														var insertqQuery = "INSERT INTO useridinfo (user_id) VALUES (?)";
-		
+	*/	
 		  };
 		 
 
