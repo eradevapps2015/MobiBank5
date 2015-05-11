@@ -12,23 +12,13 @@ angular.module('starter.controllers', [])
 	 
 	  $ionicPlatform.ready(function() {
     // alert("controlle AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-   
-  var uu = $cordovaDevice.getUUID();
-  $ionicPopup.alert({  
-    	title:'App Controller'+uu,
-      //template:'From date'
-	  })
-	// alert("UU ID App:"+uu);
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    
     //Begin For sqlite
-    	db = $cordovaSQLite.openDB({ name: "bankasiadb.db" });
+    	$rootScope.dataBaseDb = $cordovaSQLite.openDB({ name: "bankasiadb.db" });
     $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS useridinfo (user_id text)");
 	     var query = "SELECT user_id FROM useridinfo";
-	     alert("ddddddddddd: "+db);
-        $cordovaSQLite.execute(db, query).then(function(res) {
-        	 alert("gggg: "+db);
+	     alert("ddddddddddd: "+	$rootScope.dataBaseDb);
+        $cordovaSQLite.execute(	$rootScope.dataBaseDb, query).then(function(res) {
+        	
             if(res.rows.length > 0) {
 			
               	
@@ -42,6 +32,16 @@ angular.module('starter.controllers', [])
             console.error(err);
         });
     //End sqlite
+  var uu = $cordovaDevice.getUUID();
+  $ionicPopup.alert({  
+    	title:'App Controller'+uu,
+      //template:'From date'
+	  })
+	// alert("UU ID App:"+uu);
+    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+    // for form inputs)
+    
+   
     
 		if(window.Connection) {
                 if(navigator.connection.type == Connection.NONE) {
@@ -128,11 +128,11 @@ document.addEventListener("deviceready", function() {
 		
 
 			 $scope.login = function(user) {
-			 	alert("login"+db);
+			 	alert("login"+	$rootScope.dataBaseDb);
 			 //Begin For Insert
 		//Begin For Insert
 				var insertqQuery = "INSERT INTO useridinfo (user_id) VALUES (?)";
-				$cordovaSQLite.execute(db, insertqQuery,[user.uname]).then(function(res) {
+				$cordovaSQLite.execute(	$rootScope.dataBaseDb, insertqQuery,[user.uname]).then(function(res) {
 				alert("Insert successfully !");
 				//$state.go('app.welcome');
 					}, function (err) {
