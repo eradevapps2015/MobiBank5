@@ -11,27 +11,8 @@ angular.module('starter.controllers', [])
 	 //alert("controlle ggggggggggggggggggggggggggggr");
 	 
 	  $ionicPlatform.ready(function() {
-    // alert("controlle AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-    //Begin For sqlite
-    	$rootScope.dataBaseDb = $cordovaSQLite.openDB({ name: "bankasiadb.db" });
-    $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS useridinfo (user_id text)");
-	     var query = "SELECT user_id FROM useridinfo";
-	     alert("ddddddddddd: "+	$rootScope.dataBaseDb);
-        $cordovaSQLite.execute(	$rootScope.dataBaseDb, query).then(function(res) {
-        	
-            if(res.rows.length > 0) {
-			
-              	
-					$scope.user = { uname:res.rows.item(0).user_id};
-					
-            } else {
-                console.log("No results found");
-                	 alert("No results found");
-            }
-        }, function (err) {
-            console.error(err);
-        });
-    //End sqlite
+    alert("controlle AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+  
   var uu = $cordovaDevice.getUUID();
   $ionicPopup.alert({  
     	title:'App Controller'+uu,
@@ -52,6 +33,27 @@ angular.module('starter.controllers', [])
                     
                 }
             }
+            
+              //Begin For sqlite
+    	$rootScope.dataBaseDb = $cordovaSQLite.openDB({ name: "bankasiadb.db" });
+    $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS useridinfo (user_id text)");
+	     var query = "SELECT user_id FROM useridinfo";
+	    // alert("ddddddddddd: "+	$rootScope.dataBaseDb);
+        $cordovaSQLite.execute(	$rootScope.dataBaseDb, query).then(function(res) {
+        	
+            if(res.rows.length > 0) {
+			
+              	
+					$scope.user = { uname:res.rows.item(0).user_id};
+					
+            } else {
+                console.log("No results found");
+                	 alert("No results found");
+            }
+        }, function (err) {
+            console.error(err);
+        });
+    //End sqlite
     
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
