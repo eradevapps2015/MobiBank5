@@ -1,3 +1,4 @@
+var db=null;
 angular.module('starter.controllers', [])
 
 // **************************************Sign In Controller*******************************************************
@@ -7,19 +8,38 @@ angular.module('starter.controllers', [])
 	
 	.controller('SignInCtrl', function($ionicPlatform,$scope, $state, $http, $rootScope, $ionicLoading, $timeout,$ionicPopup,$filter,$cordovaSQLite,$cordovaDevice) {
 	//$urlRouterProvider.otherwise("/welcome/home");
-	 alert("controlle ggggggggggggggggggggggggggggr");
+	 //alert("controlle ggggggggggggggggggggggggggggr");
 	 
 	  $ionicPlatform.ready(function() {
-     alert("controlle AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+    // alert("controlle AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
    
   var uu = $cordovaDevice.getUUID();
-/*  $ionicPopup.alert({  
+  $ionicPopup.alert({  
     	title:'App Controller'+uu,
       //template:'From date'
-	  })*/
+	  })
 	// alert("UU ID App:"+uu);
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+    
+    //Begin For sqlite
+    	db = $cordovaSQLite.openDB({ name: "bankasiadb.db" });
+    $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS useridinfo (user_id text)");
+	     var query = "SELECT user_id FROM useridinfo";
+	     alert("ddddddddddd: "+db);
+        $cordovaSQLite.execute(db, query).then(function(res) {
+            if(res.rows.length > 0) {
+			
+              	
+					$scope.user = { uname:res.rows.item(0).user_id};
+					
+            } else {
+                console.log("No results found");
+            }
+        }, function (err) {
+            console.error(err);
+        });
+    //End sqlite
     
 		if(window.Connection) {
                 if(navigator.connection.type == Connection.NONE) {
