@@ -152,9 +152,10 @@ document.addEventListener("deviceready", function() {
 				tx.executeSql("select user_id from user_info where user_id=? ;", [user.uname], function(tx, res) {
            
 			  if(res.rows.length > 0) {
-				var uid=res.rows.item(i).user_id;
+				var uid=res.rows.item(0).user_id;
 					tx.executeSql("UPDATE user_info set user_id=? where user_id=?", [user.uname,uid], function(tx, res){
 					 alert("Update successfully");
+					  $state.go('app.welcome');
 					}, function(e) {
 					 
 					  alert("ERROR: ");
@@ -162,6 +163,7 @@ document.addEventListener("deviceready", function() {
 			  }else{
 					   tx.executeSql("INSERT INTO user_info (user_id) VALUES (?)", [user.uname], function(tx, res) {
 				 alert("Insert successfully");
+				  $state.go('app.welcome');
 				}, function(e) {
 				 
 				  alert("ERROR:");
