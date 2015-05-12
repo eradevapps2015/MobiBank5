@@ -13,11 +13,8 @@ angular.module('starter.controllers', [])
 	  $ionicPlatform.ready(function() {
    
   
-  var uu = $cordovaDevice.getUUID();
-  $ionicPopup.alert({  
-    	title:'App Controller'+uu,
-      //template:'From date'
-	  })
+  //var uu = $cordovaDevice.getUUID();
+ 
 	// alert("UU ID App:"+uu);
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -145,10 +142,10 @@ document.addEventListener("deviceready", function() {
 	//$rootScope.getServerIp='http://202.40.178.58/'  //For Live
 	
 
-	//	$scope.user = { uname:'era@mybank.com'};
+		$scope.user = { uname:'era@mybank.com'};
 	
 
-			 $scope.login = function(user) {
+			 $scope.login1 = function(user) {
 			 		alert("Insert Login");
 			 	
     		db.transaction(function(tx) {       
@@ -198,7 +195,7 @@ document.addEventListener("deviceready", function() {
 		 
 
     
-	$scope.login1= function (user) {
+	$scope.login= function (user) {
 	
        				
 		if(!user || ! user.uname){
@@ -250,9 +247,9 @@ document.addEventListener("deviceready", function() {
 								 //Begin For source Account ********************************
 								$http({
 								  method: 'GET',
-								  
+								  //12345678900
 								  url:  $rootScope.getServerIp+'BankAndroidConnectivity/AccountNumberListSV',
-								  params: {mailID: $rootScope.mailID,sessiongID:$rootScope.sessionID,imei:'12345678900'},
+								  params: {mailID: $rootScope.mailID,sessiongID:$rootScope.sessionID,imei:$cordovaDevice.getUUID()},
 								  //type:'JSON',
 								  headers : { 'Content-Type': 'application/json' }
 								}).success(function(data, status, headers, config) {                  
@@ -2665,7 +2662,7 @@ $scope.update = function(sa) {
 			 });
 			
 })
-.controller('RegistrationCtrl', function($scope, $state, $http, $rootScope, $ionicLoading, $timeout,$ionicPopup,$filter) {
+.controller('RegistrationCtrl', function($scope, $state, $http, $rootScope, $ionicLoading, $timeout,$ionicPopup,$filter,$cordovaDevice) {
 	//**********Begin Execute Registration***************************
 
 		
@@ -2691,7 +2688,22 @@ $scope.update = function(sa) {
 			  title: 'Mobile No. Required !',
 			  //template:'From date'
 			  })
-			}else {
+			}else if(navigator.connection.type == Connection.NONE){
+			   $ionicPopup.confirm({
+                        title: "Internet Disconnected",
+                        content: "The internet is disconnected on your device. Please Connect Internet"
+                    })
+	/*		
+		if(window.Connection) {
+                if(navigator.connection.type == Connection.NONE) {
+                    $ionicPopup.confirm({
+                        title: "Internet Disconnected",
+                        content: "The internet is disconnected on your device. Please Connect Internet"
+                    })
+                    
+                }
+            }	
+		*/	}else {
 			
 			//alert("succcc");
 						$ionicLoading.show({
@@ -2700,7 +2712,7 @@ $scope.update = function(sa) {
 						$http({
 							  method: 'GET',							 
 							  url:  $rootScope.getServerIp+'BankAndroidConnectivity/RegistrationSV',
-							   params: {userId:reg.userid,uniqueID:'12345678900',customerID:reg.customerid,customerName:reg.fullname,mobileNo:reg.mobile,email:reg.email},
+							   params: {userId:reg.userid,uniqueID:$cordovaDevice.getUUID(),customerID:reg.customerid,customerName:reg.fullname,mobileNo:reg.mobile,email:reg.email},
 							 // params: {cusCode:cusCode},
 							  //type:'JSON',
 							  headers : { 'Content-Type': 'application/json' }
