@@ -209,8 +209,12 @@ document.addEventListener("deviceready", function() {
 		  title: 'Password Required !',
 		  //template:'From date'
 		  })
-		}
-		else{
+		}else if(navigator.connection.type == Connection.NONE){
+		 $ionicPopup.confirm({
+                        title: "Internet Disconnected",
+                        content: "The internet is disconnected on your device. Please Connect Internet"
+                    })	
+		}else{
 	
 			$ionicLoading.show({
                 template: 'Please Wait..'
@@ -372,9 +376,9 @@ document.addEventListener("deviceready", function() {
 							}); 
 												
 													 
-							//	$state.go('app.welcome');
+								$state.go('app.welcome');
 								
-								
+								/*
 								//*************Begin Save User ID************
 							
 										 var query = "SELECT user_id FROM useridinfo where user_id=?";
@@ -439,7 +443,7 @@ document.addEventListener("deviceready", function() {
 										});
 								
 								//***********End Save User ID****************
-								
+								*/
 								
 								
 												});  
