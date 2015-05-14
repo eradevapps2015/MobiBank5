@@ -55,6 +55,7 @@ angular.module('starter.controllers', [])
 				  if(len>0){
 				  	 //alert("Found");
 				  	  for (var i = 0; i < len; i++){
+				  	  	 alert("Inside Loop");
 				  	  	 alert(res.rows.item(i)['user_id']);
 				  	  }
 				  }else{
