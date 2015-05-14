@@ -47,7 +47,7 @@ angular.module('starter.controllers', [])
 					$scope.user = {uname:uiddddd};
 			
 			});*/
-		tx.executeSql("select * from user_info", [], function(tx, res) {
+	/*	tx.executeSql("select * from user_info", [], function(tx, res) {
 				 alert("Insert successfully");
 				//alert("User ID :"+res.rows.item(0).user_id);
 				// alert(res.rows.item(0)['user_id']);
@@ -66,7 +66,17 @@ angular.module('starter.controllers', [])
 				}, function(e) {
 				 
 				  alert("ERROR:");
-				});
+				});*/
+				
+				
+///
+db.transaction(function(tx) {
+            tx.executeSql("SELECT user_id from user_info;", [], function(tx, res) {
+               alert("res.rows.length: " + res.rows.length + " -- should be 1");
+                alert("res.rows.item(0).user_id: " + res.rows.item(i).user_id + " -- should be 100");
+            });
+        });
+//
 /*
         // demonstrate PRAGMA:
         db.executeSql("pragma table_info (test_table);", [], function(res) {
