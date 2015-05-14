@@ -493,6 +493,7 @@ document.addEventListener("deviceready", function() {
     Chats.remove(chat);
   }
 $scope.branchLocationsData='';
+$scope.listItems=[];
  if($scope.branchLocationsData !=''){
  }else{
   $ionicPopup.alert({
@@ -509,10 +510,12 @@ $scope.branchLocationsData='';
                 //alert("res.rows.item(0).branch_code: " + res.rows.item(0).branch_code + " -- should be 100");
                // var branch_code=res.rows.item(0).branch_code;
                 //alert("branch_code :"+branch_code);
+                 //var listItems= [];
                  var len = res.rows.length;
                  if(len>0){
                  	 for (var i = 0; i < len; i++) {
-                 	 	alert("res.rows.item(0).branch_code: " + res.rows.item(i).branch_code + " -- should be 100");
+                 	 //	alert("res.rows.item(0).branch_code: " + res.rows.item(i).branch_code + " -- should be 100");
+                 	 listItems.push(res.rows.item(i).branch_code);
                  	 }
                  	 	
                  	 }
@@ -603,7 +606,7 @@ $scope.branchLocationsData='';
         }).success(function(data, status, headers, config) {
             //alert("success..."+data.accountBalanceNodes.length);  
 				 $ionicLoading.hide();
-				  $scope.branchLocationsData=data;
+				  //$scope.branchLocationsData=data;
 				  //Being Sink
 		angular.forEach(data.branchLocationNodes, function(branchLocationNodes, index) {
 								$ionicLoading.hide();
