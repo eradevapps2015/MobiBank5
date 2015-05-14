@@ -570,7 +570,7 @@ $scope.branchLocationsData='';
   
   
   //Begin siync
-  $scope.btnSyncBranchLocation1=function(){
+  $scope.btnSyncBranchLocation2=function(){
   		if(window.Connection) {
                 if(navigator.connection.type == Connection.NONE) {
                     $ionicPopup.confirm({
