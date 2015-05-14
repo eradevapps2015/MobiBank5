@@ -29,7 +29,7 @@ angular.module('starter.controllers', [])
       db.transaction(function(tx) {
        // tx.executeSql('DROP TABLE IF EXISTS user_info');
         tx.executeSql('CREATE TABLE IF NOT EXISTS user_info (user_id text)');
-    
+     tx.executeSql('CREATE TABLE IF NOT EXISTS branch_location (slno text,branch_code text,branch_name text,branch_address text,longitude text,latitude text,phone text,fax text)');
 				
 ///For user
 db.transaction(function(tx) {
