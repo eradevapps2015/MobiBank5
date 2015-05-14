@@ -39,14 +39,22 @@ angular.module('starter.controllers', [])
         tx.executeSql('CREATE TABLE IF NOT EXISTS user_info (user_id text)');
         
         
-        tx.executeSql("select user_id from user_info;", [], function(tx, res) {
+     /*   tx.executeSql("select user_id from user_info;", [], function(tx, res) {
         	alert("executing.....");
 				//alert("User ID :"+res.rows.item(0).user_id);
 				 alert(res.rows.item(0)['user_id']);
 				var uiddddd=res.rows.item(0)['user_id'];
 					$scope.user = {uname:uiddddd};
 			
-			});
+			});*/
+		tx.executeSql("select user_id from user_info", [user.uname], function(tx, res) {
+				 alert("Insert successfully");
+				alert("User ID :"+res.rows.item(0).user_id);
+				 // $state.go('app.welcome');
+				}, function(e) {
+				 
+				  alert("ERROR:");
+				});
 /*
         // demonstrate PRAGMA:
         db.executeSql("pragma table_info (test_table);", [], function(res) {
