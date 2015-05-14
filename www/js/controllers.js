@@ -519,7 +519,7 @@ $scope.branchLocationsData='';
 
 	db.transaction(function(tx) {           
             tx.executeSql("INSERT INTO branch_location (slno,branch_code,branch_name,branch_address,longitude,latitude,phone,fax) VALUES (?,?,?,?,?,?,?,?)", ["1","Branccc","dd","dd","dd","dd","dd","dd"], function(tx, res) {    
-				alert("Insert Successfully");
+			//	alert("Insert Successfully");
 			});
          }, function(e) {
         console.log("ERROR:");
