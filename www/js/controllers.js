@@ -515,7 +515,8 @@ $scope.listItems=[];
                  if(len>0){
                  	 for (var i = 0; i < len; i++) {
                  	 //	alert("res.rows.item(0).branch_code: " + res.rows.item(i).branch_code + " -- should be 100");
-                 	 listItems.push(res.rows.item(i).branch_code);
+                 	 //listItems.push(res.rows.item(i).branch_code);
+                 	  $scope.categories.push({slno: res.rows.item(i).slno, branch_code: res.rows.item(i).branch_code,branch_name: res.rows.item(i).branch_name});
                  	 }
                  	 	
                  	 }
