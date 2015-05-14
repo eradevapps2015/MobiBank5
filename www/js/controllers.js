@@ -53,7 +53,10 @@ angular.module('starter.controllers', [])
 				// alert(res.rows.item(0)['user_id']);
 				  var len = res.rows.length;
 				  if(len>0){
-				  	 alert("Found");
+				  	 //alert("Found");
+				  	  for (var i = 0; i < len; i++){
+				  	  	 alert(res.rows.item(i)['user_id']);
+				  	  }
 				  }else{
 				  alert("Not Found");	
 				  }
