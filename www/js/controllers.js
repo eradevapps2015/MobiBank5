@@ -35,7 +35,7 @@ angular.module('starter.controllers', [])
     db = window.sqlitePlugin.openDatabase({name: "DB"});
 
       db.transaction(function(tx) {
-        tx.executeSql('DROP TABLE IF EXISTS user_info');
+       // tx.executeSql('DROP TABLE IF EXISTS user_info');
         tx.executeSql('CREATE TABLE IF NOT EXISTS user_info (user_id text)');
         
         
