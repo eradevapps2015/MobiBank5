@@ -609,7 +609,7 @@ $scope.branchLocationsData='';
 							
 					db.transaction(function(tx) {           
              tx.executeSql("INSERT INTO branch_location (slno,branch_code,branch_name,branch_address,longitude,latitude,phone,fax) VALUES (?,?,?,?,?,?,?,?)", [lslno,lbranchCode,lbranchName,lbranchAddress,llogitude,llatitude,lphone,lfax], function(tx, res) {    
-				alert("Insert Successfully");
+			//	alert("Insert Successfully");
 			});
          }, function(e) {
         console.log("ERROR:");
