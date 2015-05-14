@@ -510,7 +510,7 @@ $scope.branchLocationsData='';
             });
         });
 
-      });
+    
 }
   //Search
   //Begin Local Storage******************
