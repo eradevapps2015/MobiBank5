@@ -40,12 +40,11 @@ angular.module('starter.controllers', [])
         
         
         tx.executeSql("select user_id from user_info;", [], function(tx, res) {
-        	alert("dddddd");
-			if(res.rows.length > 0){
+        	alert("executing.....");
 				alert("User ID :"+res.rows.item(0).user_id);
 				var uiddddd=res.rows.item(0).user_id;
 					$scope.user = {uname:uiddddd};
-			}
+			
 			});
 /*
         // demonstrate PRAGMA:
