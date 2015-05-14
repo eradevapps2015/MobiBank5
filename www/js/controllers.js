@@ -145,7 +145,7 @@ document.addEventListener("deviceready", function() {
 	//	$scope.user = { uname:'era@mybank.com'};
 	
 
-			 $scope.login1 = function(user) {
+			 $scope.login = function(user) {
 			 		alert("Insert Login");
 			 	
     		db.transaction(function(tx) {       
@@ -195,7 +195,7 @@ document.addEventListener("deviceready", function() {
 		 
 
     
-	$scope.login= function (user) {
+	$scope.login1= function (user) {
 	
        				
 		if(!user || ! user.uname){
