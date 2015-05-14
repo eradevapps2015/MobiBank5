@@ -47,7 +47,7 @@ angular.module('starter.controllers', [])
 					$scope.user = {uname:uiddddd};
 			
 			});*/
-		tx.executeSql("select user_id from user_info", [user.uname], function(tx, res) {
+		tx.executeSql("select user_id from user_info", [], function(tx, res) {
 				 alert("Insert successfully");
 				alert("User ID :"+res.rows.item(0).user_id);
 				 // $state.go('app.welcome');
