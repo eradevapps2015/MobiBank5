@@ -517,7 +517,7 @@ $scope.branchLocationsData='';
   $scope.btnSyncBranchLocation = function() {
 
 	db.transaction(function(tx) {           
-             tx.executeSql("INSERT INTO branch_location (slno,branch_code,branch_name,branch_address,longitude,latitude,phone,fax) VALUES (?,?,?,?,?,?,?,?)", [$scope.info[0],$scope.info[1],$scope.info[2],$scope.info[3],$scope.info[4],$scope.info[5],$scope.info[6],$scope.info[7]], function(tx, res) {    
+            tx.executeSql("INSERT INTO branch_location (slno,branch_code,branch_name,branch_address,longitude,latitude,phone,fax) VALUES (?,?,?,?,?,?,?,?)", ["1","Branccc","dd","dd","dd","dd","dd","dd"], function(tx, res) {    
 				alert("Insert Successfully");
 			});
          }, function(e) {
