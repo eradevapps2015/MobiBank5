@@ -499,8 +499,65 @@ $scope.branchLocationsData='';
 		  //template:'From date'
 		  })
   }
+  
+  //Begin Local Storage******************
+  $scope.btnSyncBranchLocation = function() {
+
+	db.transaction(function(tx) {           
+             tx.executeSql("INSERT INTO branch_location (slno,branch_code,branch_name,branch_address,longitude,latitude,phone,fax) VALUES (?,?,?,?,?,?,?,?)", [$scope.info[0],$scope.info[1],$scope.info[2],$scope.info[3],$scope.info[4],$scope.info[5],$scope.info[6],$scope.info[7]], function(tx, res) {    
+				alert("Insert Successfully");
+			});
+         }, function(e) {
+        console.log("ERROR:");
+    });
+}
+
+
+
+ $scope.info = [ {
+	sl:'1',
+	bracnh_code:'25',
+	branch_name: '1.Principal Office Branch',
+	address: 'Address: 111-113, Motijheel C/A. Dhaka - 1000.',
+	lat:'23.555566',
+	lng:'90.236544',
+	fax:'Fax: 880-2-9566223',
+	ph:'Ph: 880-2-9571450, 9571451' 
+	},   
+	{
+	sl:'1',
+	bracnh_code:'25',
+	branch_name: '2.Palton Branch ',
+	address: 'Address: Bay s Gallaria 57, Gulshan Avenue (Ground Floor)',
+	lat:'23.555566',
+	lng:'90.236544',
+	fax:'Fax: 880-2-9566223',
+	ph:'Ph:880-2-8828103'  },
+	{
+	sl:'1',
+	bracnh_code:'25',
+	branch_name: '3.Gulshan Branch ',
+	address: 'Address: Rangs Tower 68 Purana Paltan (1st Floor) Dhaka-1000',
+	lat:'23.555566',
+	lng:'90.236544',
+	fax:'Fax:  880-2-8816739',
+	ph:'Ph: 880-2-9571450, 9571451'  },
+	{
+	sl:'1',
+	bracnh_code:'25',
+	branch_name: '4.Mitford Branch ',
+	address: 'Address: Bismillah Tower 147/148, Mitford Road',
+	lat:'23.555566',
+	lng:'90.236544',
+	fax:'Fax:  880-2-7314999',
+	ph:'Ph: 880-2-7320620 - 1'  }
+	
+	];
+  //End Local Storage
+  
+  
   //Begin siync
-  $scope.btnSyncBranchLocation=function(){
+  $scope.btnSyncBranchLocation1=function(){
   		if(window.Connection) {
                 if(navigator.connection.type == Connection.NONE) {
                     $ionicPopup.confirm({
