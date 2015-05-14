@@ -505,9 +505,17 @@ $scope.branchLocationsData='';
   db.transaction(function(tx) {
             tx.executeSql("SELECT * from branch_location;", [], function(tx, res) {
               // alert("res.rows.length: " + res.rows.length + " -- should be 1");
-                alert("res.rows.item(0).branch_code: " + res.rows.item(0).branch_code + " -- should be 100");
+                //alert("res.rows.item(0).branch_code: " + res.rows.item(0).branch_code + " -- should be 100");
                // var branch_code=res.rows.item(0).branch_code;
                 //alert("branch_code :"+branch_code);
+                 var len = results.rows.length;
+                 if(len>0){
+                 	 for (var i = 0; i < len; i++) {
+                 	 	alert("res.rows.item(0).branch_code: " + res.rows.item(0).branch_code + " -- should be 100");
+                 	 }
+                 	 	
+                 	 }
+                 }
             });
         });
 
