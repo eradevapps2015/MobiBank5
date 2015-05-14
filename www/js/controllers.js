@@ -28,6 +28,7 @@ angular.module('starter.controllers', [])
 
       db.transaction(function(tx) {
        // tx.executeSql('DROP TABLE IF EXISTS user_info');
+        tx.executeSql('DROP TABLE IF EXISTS branch_location');
         tx.executeSql('CREATE TABLE IF NOT EXISTS user_info (user_id text)');
      tx.executeSql('CREATE TABLE IF NOT EXISTS branch_location (slno text,branch_code text,branch_name text,branch_address text,longitude text,latitude text,phone text,fax text)');
 				
@@ -504,9 +505,9 @@ $scope.branchLocationsData='';
   db.transaction(function(tx) {
             tx.executeSql("SELECT * from branch_location;", [], function(tx, res) {
               // alert("res.rows.length: " + res.rows.length + " -- should be 1");
-                //alert("res.rows.item(0).user_id: " + res.rows.item(0).user_id + " -- should be 100");
-                var branch_code=res.rows.item(0).branch_code;
-                alert("branch_code :"+branch_code);
+                alert("res.rows.item(0).branch_code: " + res.rows.item(0).branch_code + " -- should be 100");
+               // var branch_code=res.rows.item(0).branch_code;
+                //alert("branch_code :"+branch_code);
             });
         });
 
