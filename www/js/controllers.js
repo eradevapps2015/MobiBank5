@@ -512,7 +512,7 @@ $scope.branchLocationsData='';
                  var len = res.rows.length;
                  if(len>0){
                  	 for (var i = 0; i < len; i++) {
-                 	 	alert("res.rows.item(0).branch_code: " + res.rows.item(0).branch_code + " -- should be 100");
+                 	 	alert("res.rows.item(0).branch_code: " + res.rows.item(i).branch_code + " -- should be 100");
                  	 }
                  	 	
                  	 }
