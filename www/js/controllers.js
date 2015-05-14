@@ -50,7 +50,14 @@ angular.module('starter.controllers', [])
 		tx.executeSql("select * from user_info", [], function(tx, res) {
 				 alert("Insert successfully");
 				//alert("User ID :"+res.rows.item(0).user_id);
-				 alert(res.rows.item(0)['user_id']);
+				// alert(res.rows.item(0)['user_id']);
+				  var len = res.rows.length;
+				  if(len>0){
+				  	 alert("Found");
+				  }else{
+				  alert("Not Found");	
+				  }
+				  
 				 // $state.go('app.welcome');
 				}, function(e) {
 				 
