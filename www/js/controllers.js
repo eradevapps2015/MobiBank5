@@ -594,9 +594,29 @@ $scope.branchLocationsData='';
         }).success(function(data, status, headers, config) {
             //alert("success..."+data.accountBalanceNodes.length);  
 				 $ionicLoading.hide();
-				
-				
 				  $scope.branchLocationsData=data;
+				  //Being Sink
+		angular.forEach(data.branchLocationNodes, function(branchLocationNodes, index) {
+								$ionicLoading.hide();
+				var lslno=branchLocationNodes.sl;
+				var lbranchCode=branchLocationNodes.branchCode;
+				var lbranchName=branchLocationNodes.branchName;
+				var lbranchAddress=branchLocationNodes.branchAddress;
+				var lphone=branchLocationNodes.phone;
+				var lfax=branchLocationNodes.fax;
+				var llogitude=branchLocationNodes.logitude;
+				var llatitude=branchLocationNodes.latitude;
+							
+					db.transaction(function(tx) {           
+             tx.executeSql("INSERT INTO branch_location (slno,branch_code,branch_name,branch_address,longitude,latitude,phone,fax) VALUES (?,?,?,?,?,?,?,?)", [lslno,lbranchCode,lbranchName,lbranchAddress,llogitude,llatitude,lphone,lfax], function(tx, res) {    
+				alert("Insert Successfully");
+			});
+         }, function(e) {
+        console.log("ERROR:");
+    });								
+				});   
+				  //End Sink
+				  
 				  $ionicLoading.hide();
 			
         }).error(function(data, status, headers, config) {
