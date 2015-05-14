@@ -145,7 +145,7 @@ document.addEventListener("deviceready", function() {
 	//	$scope.user = { uname:'era@mybank.com'};
 	
 
-			 $scope.login111 = function(user) {
+		/*	 $scope.login111 = function(user) {
 			 		alert("Insert Login");
 			 	
     		db.transaction(function(tx) {       
@@ -181,51 +181,37 @@ document.addEventListener("deviceready", function() {
       });	
       
       
-      
-      
-      $scope.login = function(user) {
+   	
+		  };*/
+		  
+		  
+	 $scope.login = function(user) {
 			 		alert("Insert Login");
 			 	
     		db.transaction(function(tx) {       
 			tx.executeSql("select user_id from user_info where user_id=? ;", [user.uname], function(tx, res) {
 				 if(res.rows.length > 0) {
+				 alert("Found");
 			  $state.go('app.welcome');
-			  	 alert("user Found");
 			  }else{
-			  var deleteSql="delete from user_info";
-			  tx.executeSql(deleteSql, [], function(tx, res) {
-			  		 alert("Deleted");
-				  
-				
-				var userInsertQqery="INSERT INTO user_info (user_id) VALUES (?)";
-				 tx.executeSql(userInsertQqery, [user.uname], function(tx, res) {
-					 alert("Insert successfully");
+			  
+				tx.executeSql("delete from user_info ;", [], function(tx, res) {
+				alert("Deleted");
+			  
+					tx.executeSql("INSERT INTO user_info (user_id) VALUES (?)", [user.uname], function(tx, res) {
+				 alert("Insert successfully");
 				  $state.go('app.welcome');
-				 })
+				}, function(e) {
+				 
+				  alert("ERROR:");
+				});
 			
-			  
-			  });
-			  
-			 
+            });
+			
 			  }
 			})       
-      });		
-
-
-		  };
-
-	/*
-		db.transaction(function(tx) {       
-
-        tx.executeSql("INSERT INTO user_info (user_id) VALUES (?)", [user.uname], function(tx, res) {
-         alert("Insert successfully");
-        }, function(e) {
-          console.log("ERROR: " + e.message);
-          alert("ERROR: " + e.message);
-        });
-      });										//End For Inser														var insertqQuery = "INSERT INTO useridinfo (user_id) VALUES (?)";
-	*/	
-		  };
+      });
+}	  
 		 
 
     
