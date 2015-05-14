@@ -7,18 +7,10 @@ angular.module('starter.controllers', [])
 	// **************************************Sign In Controller*******************************************************
 	
 	.controller('SignInCtrl', function($ionicPlatform,$scope, $state, $http, $rootScope, $ionicLoading, $timeout,$ionicPopup,$filter,$cordovaSQLite,$cordovaDevice) {
-	//$urlRouterProvider.otherwise("/welcome/home");
-	 //alert("controlle ggggggggggggggggggggggggggggr");
-	 
+	
 	  $ionicPlatform.ready(function() {
    
-  
-  //var uu = $cordovaDevice.getUUID();
- 
-	// alert("UU ID App:"+uu);
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    
+
    
     
 		if(window.Connection) {
@@ -37,69 +29,18 @@ angular.module('starter.controllers', [])
       db.transaction(function(tx) {
        // tx.executeSql('DROP TABLE IF EXISTS user_info');
         tx.executeSql('CREATE TABLE IF NOT EXISTS user_info (user_id text)');
-        
-        
-     /*   tx.executeSql("select user_id from user_info;", [], function(tx, res) {
-        	alert("executing.....");
-				//alert("User ID :"+res.rows.item(0).user_id);
-				 alert(res.rows.item(0)['user_id']);
-				var uiddddd=res.rows.item(0)['user_id'];
-					$scope.user = {uname:uiddddd};
-			
-			});*/
-	/*	tx.executeSql("select * from user_info", [], function(tx, res) {
-				 alert("Insert successfully");
-				//alert("User ID :"+res.rows.item(0).user_id);
-				// alert(res.rows.item(0)['user_id']);
-				  var len = res.rows.length;
-				  if(len>0){
-				  	 //alert("Found");
-				  	  for (var i = 0; i < len; i++){
-				  	  	 alert("Inside Loop");
-				  	  	 alert(res.rows.item(i)['user_id']);
-				  	  }
-				  }else{
-				  alert("Not Found");	
-				  }
-				  
-				 // $state.go('app.welcome');
-				}, function(e) {
-				 
-				  alert("ERROR:");
-				});*/
+    
 				
-				
-///
+///For user
 db.transaction(function(tx) {
             tx.executeSql("SELECT user_id from user_info;", [], function(tx, res) {
-               alert("res.rows.length: " + res.rows.length + " -- should be 1");
-                alert("res.rows.item(0).user_id: " + res.rows.item(0).user_id + " -- should be 100");
+              // alert("res.rows.length: " + res.rows.length + " -- should be 1");
+                //alert("res.rows.item(0).user_id: " + res.rows.item(0).user_id + " -- should be 100");
+                var user_id11=res.rows.item(0).user_id;
+                	$scope.user = { uname:user_id11};
             });
         });
-//
-/*
-        // demonstrate PRAGMA:
-        db.executeSql("pragma table_info (test_table);", [], function(res) {
-          //console.log();
-          	alert("PRAGMA res: " + JSON.stringify(res));
-        });
 
-        tx.executeSql("INSERT INTO test_table (data, data_num) VALUES (?)", ["test", 100], function(tx, res) {
-          
-          	alert("Insert successfully !"+"insertId: " + res.insertId + " -- probably 1");
-
-          db.transaction(function(tx) {
-            tx.executeSql("select count(id) as cnt from test_table;", [], function(tx, res) {
-              console.log("res.rows.length: " + res.rows.length + " -- should be 1");
-              console.log("res.rows.item(0).cnt: " + res.rows.item(0).cnt + " -- should be 1");
-              	alert("Insert successfully !"+"res.rows.length: " + res.rows.length + " -- should be 1");
-            });
-          });
-
-        }, function(e) {
-          console.log("ERROR: " + e.message);
-          	alert("ERROR: " + e.message);
-        });*/
       });
     //End sqlite**********************************************************
     
