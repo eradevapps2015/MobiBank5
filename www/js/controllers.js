@@ -657,7 +657,7 @@ $scope.listItems=[];
  	
 		  $timeout(function() {
      $ionicLoading.hide();
-   }, 5000);
+   }, 10000);
   
   }
   
