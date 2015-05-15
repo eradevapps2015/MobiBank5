@@ -19,8 +19,9 @@
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="category in branChcategories | filter:input.searchInput" type="item-text-wrap" href="#/tab/locations/" ng-class-odd="'odd'" ng-class-even="'even'">
        
         <h2>&nbsp; {{category.slno}}.&nbsp;&nbsp;{{category.branch_name}}</h2>
-		<h2>Branch:&nbsp;{{category.branch_name}}</h2>
-	
+		<h2>Addr.:&nbsp;{{category.branch_address}}</h2>
+		<h2>Ph :&nbsp;{{category.phone}}</h2>
+		<h2>Fax :&nbsp;{{category.fax}}</h2>
         
         <i class="icon ion-chevron-right icon-accessory"></i>
 
