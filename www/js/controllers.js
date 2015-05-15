@@ -517,7 +517,7 @@ $scope.listItems=[];
                  	 for (var i = 0; i < len; i++) {
                  	 	alert("res.rows.item(0).branch_code: " + res.rows.item(i).branch_code + "Branch Name :"+res.rows.item(i).branch_name);
                  	 //listItems.push(res.rows.item(i).branch_code);
-                 	  $scope.categories.push({slno: res.rows.item(i).slno, branch_code: res.rows.item(i).branch_code,branch_name: res.rows.item(i).branch_name});
+                 	 // $scope.categories.push({slno: res.rows.item(i).slno, branch_code: res.rows.item(i).branch_code,branch_name: res.rows.item(i).branch_name});
                  	 }
                  	 	
                  	 }
