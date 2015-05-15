@@ -505,6 +505,7 @@ $scope.listItems=[];
    	
 			  $scope.btnSyncBranchLocation1 = function() {
 			  	alert("show");
+			$scope.branChcategories = [];
   db.transaction(function(tx) {
             tx.executeSql("SELECT * from branch_location;", [], function(tx, res) {
               // alert("res.rows.length: " + res.rows.length + " -- should be 1");
@@ -515,9 +516,9 @@ $scope.listItems=[];
                  var len = res.rows.length;
                  if(len>0){
                  	 for (var i = 0; i < len; i++) {
-                 	 	alert("res.rows.item(0).branch_code: " + res.rows.item(i).branch_code + "Branch Name :"+res.rows.item(i).branch_name);
+                 	 //	alert("res.rows.item(0).branch_code: " + res.rows.item(i).branch_code + "Branch Name :"+res.rows.item(i).branch_name);
                  	 //listItems.push(res.rows.item(i).branch_code);
-                 	 // $scope.categories.push({slno: res.rows.item(i).slno, branch_code: res.rows.item(i).branch_code,branch_name: res.rows.item(i).branch_name});
+                 	  $scope.branChcategories.push({slno: res.rows.item(i).slno, branch_code: res.rows.item(i).branch_code,branch_name: res.rows.item(i).branch_name});
                  	 }
                  	 	
                  	 }
