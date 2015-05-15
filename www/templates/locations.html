@@ -12,8 +12,13 @@
   </label>
 </div>
 
-
+ <ion-list>
+            <ion-item ng-repeat="category in categories" href="#/lists/{{category.slno}}">
+                {{category.branch_name}}
+            </ion-item>
+        </ion-list>
 <!--Begin-->
+<!--
 <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="category in branChcategories | filter:input.searchInput" type="item-text-wrap" href="#/tab/locations/" ng-class-odd="'odd'" ng-class-even="'even'">
        
@@ -28,6 +33,7 @@
         </ion-option-button>
       </ion-item>
     </ion-list>
+    -->
     <!--End-->
 
 <!--
