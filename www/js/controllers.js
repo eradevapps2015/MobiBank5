@@ -565,50 +565,6 @@ $scope.listItems=[];
     });
 }
 
-
-
- $scope.info = [ {
-	sl:'1',
-	bracnh_code:'25',
-	branch_name: '1.Principal Office Branch',
-	address: 'Address: 111-113, Motijheel C/A. Dhaka - 1000.',
-	lat:'23.555566',
-	lng:'90.236544',
-	fax:'Fax: 880-2-9566223',
-	ph:'Ph: 880-2-9571450, 9571451' 
-	},   
-	{
-	sl:'1',
-	bracnh_code:'25',
-	branch_name: '2.Palton Branch ',
-	address: 'Address: Bay s Gallaria 57, Gulshan Avenue (Ground Floor)',
-	lat:'23.555566',
-	lng:'90.236544',
-	fax:'Fax: 880-2-9566223',
-	ph:'Ph:880-2-8828103'  },
-	{
-	sl:'1',
-	bracnh_code:'25',
-	branch_name: '3.Gulshan Branch ',
-	address: 'Address: Rangs Tower 68 Purana Paltan (1st Floor) Dhaka-1000',
-	lat:'23.555566',
-	lng:'90.236544',
-	fax:'Fax:  880-2-8816739',
-	ph:'Ph: 880-2-9571450, 9571451'  },
-	{
-	sl:'1',
-	bracnh_code:'25',
-	branch_name: '4.Mitford Branch ',
-	address: 'Address: Bismillah Tower 147/148, Mitford Road',
-	lat:'23.555566',
-	lng:'90.236544',
-	fax:'Fax:  880-2-7314999',
-	ph:'Ph: 880-2-7320620 - 1'  }
-	
-	];
-  //End Local Storage
-  
-  
   //Begin siync
   $scope.btnSyncBranchLocation2=function(){
   		if(window.Connection) {
@@ -655,6 +611,38 @@ $scope.listItems=[];
     });								
 				});   
 				  //End Sink
+			//Being show branch Locations
+				$scope.branChcategories = [];
+	 db.transaction(function(tx) {
+            tx.executeSql("SELECT * from branch_location;", [], function(tx, res) {
+              // alert("res.rows.length: " + res.rows.length + " -- should be 1");
+                //alert("res.rows.item(0).branch_code: " + res.rows.item(0).branch_code + " -- should be 100");
+               // var branch_code=res.rows.item(0).branch_code;
+                //alert("branch_code :"+branch_code);
+                 //var listItems= [];
+                 var len = res.rows.length;
+                 if(len>0){
+                 	 for (var i = 0; i < len; i++) {
+                 	 //	alert("res.rows.item(0).branch_code: " + res.rows.item(i).branch_code + "Branch Name :"+res.rows.item(i).branch_name);
+                 	 //listItems.push(res.rows.item(i).branch_code);
+                 	  $scope.branChcategories.push({
+                 	  	slno: res.rows.item(i).slno, 
+                 	  	branch_code: res.rows.item(i).branch_code,
+                 	  	branch_name: res.rows.item(i).branch_name,
+                 	  	branch_address: res.rows.item(i).branch_address,
+                 	  	phone: res.rows.item(i).phone,
+                 		 fax: res.rows.item(i).fax
+                 	  });
+                 	  // Make sure to apply scope change so that ng-repeat updates
+        		$scope.$apply();
+                 	//$scope.categories.push({slno: res.rows.item(i).slno, branch_name: res.rows.item(i).branch_name});
+                 	 }
+                 	 	
+                 	 }
+                 })
+            });
+        
+			//End Branch Location
 				  
 				  $ionicLoading.hide();
 			
