@@ -588,8 +588,18 @@ $scope.listItems=[];
           headers : { 'Content-Type': 'application/json' }
         }).success(function(data, status, headers, config) {
             //alert("success..."+data.accountBalanceNodes.length);  
-				 $ionicLoading.hide();
+				 //$ionicLoading.hide();
 				  //$scope.branchLocationsData=data;
+		//Begin delete
+		db.transaction(function(tx) {  
+				tx.executeSql("delete from branch_location ;", [], function(tx, res) {
+				
+				})
+             
+         }, function(e) {
+        console.log("ERROR:");
+    });	
+		//End Delete
 				  //Being Sink
 		angular.forEach(data.branchLocationNodes, function(branchLocationNodes, index) {
 							
@@ -602,7 +612,8 @@ $scope.listItems=[];
 				var llogitude=branchLocationNodes.logitude;
 				var llatitude=branchLocationNodes.latitude;
 							
-					db.transaction(function(tx) {           
+					db.transaction(function(tx) {  
+				
              tx.executeSql("INSERT INTO branch_location (slno,branch_code,branch_name,branch_address,longitude,latitude,phone,fax) VALUES (?,?,?,?,?,?,?,?)", [lslno,lbranchCode,lbranchName,lbranchAddress,llogitude,llatitude,lphone,lfax], function(tx, res) {    
 			//	alert("Insert Successfully");
 			});
