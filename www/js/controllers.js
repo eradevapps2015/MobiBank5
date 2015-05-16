@@ -486,7 +486,7 @@ document.addEventListener("deviceready", function() {
  
 })
 
-.controller('LocationsCtrl', function($scope,$state,Chats, $http, $rootScope, $ionicPopup, $ionicLoading, $timeout) {
+.controller('LocationsCtrl', function($scope,$state,$apply,Chats, $http, $rootScope, $ionicPopup, $ionicLoading, $timeout) {
 
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
@@ -526,6 +526,8 @@ $scope.listItems=[];
                  	  	phone: res.rows.item(i).phone,
                  		 fax: res.rows.item(i).fax
                  	  });
+                 	  // Make sure to apply scope change so that ng-repeat updates
+        		$scope.$apply();
                  	//$scope.categories.push({slno: res.rows.item(i).slno, branch_name: res.rows.item(i).branch_name});
                  	 }
                  	 	
@@ -620,7 +622,7 @@ $scope.listItems=[];
 				  //$scope.branchLocationsData=data;
 				  //Being Sink
 		angular.forEach(data.branchLocationNodes, function(branchLocationNodes, index) {
-								$ionicLoading.hide();
+							
 				var lslno=branchLocationNodes.sl;
 				var lbranchCode=branchLocationNodes.branchCode;
 				var lbranchName=branchLocationNodes.branchName;
