@@ -591,16 +591,13 @@ $scope.listItems=[];
 				 //$ionicLoading.hide();
 				  //$scope.branchLocationsData=data;
 		//Begin delete
-		/*
-		db.transaction(function(tx) {  
-				tx.executeSql("delete from branch_location ;", [], function(tx, res) {
-				
-				})
-             
-         }, function(e) {
-        console.log("ERROR:");
-    });	
-	*/	//End Delete
+		
+		db.transaction(function(tx) {
+            tx.executeSql("DELETE from branch_location;", [], function(tx, res) {
+                
+                 })
+            });
+		//End Delete
 				  //Being Sink
 		angular.forEach(data.branchLocationNodes, function(branchLocationNodes, index) {
 							
