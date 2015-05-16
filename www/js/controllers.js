@@ -486,7 +486,7 @@ document.addEventListener("deviceready", function() {
  
 })
 
-.controller('LocationsCtrl', function($scope,$state,$apply,Chats, $http, $rootScope, $ionicPopup, $ionicLoading, $timeout) {
+.controller('LocationsCtrl', function($scope,$state,Chats, $http, $rootScope, $ionicPopup, $ionicLoading, $timeout) {
 
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
