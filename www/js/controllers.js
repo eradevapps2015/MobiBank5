@@ -159,7 +159,7 @@ document.addEventListener("deviceready", function() {
 		  };*/
 		  
 		  
-	 $scope.login = function(user) {
+	 $scope.login1 = function(user) {
 			 		alert("Insert Login");
 			 	
     		db.transaction(function(tx) {       
@@ -197,7 +197,7 @@ document.addEventListener("deviceready", function() {
 		 
 
     
-	$scope.login1= function (user) {
+	$scope.login= function (user) {
 	
        				
 		if(!user || ! user.uname){
@@ -494,14 +494,28 @@ document.addEventListener("deviceready", function() {
   }
 $scope.branchLocationsData='';
 $scope.listItems=[];
+/*
  if($scope.branChcategories !=''){
  }else{
-  $ionicPopup.alert({
+ 
+  }*/
+  //serach
+  
+  // Begin For sync alert
+  db.transaction(function(tx) {
+            tx.executeSql("SELECT * from branch_location;", [], function(tx, res) {
+                 var len = res.rows.length;
+                 if(len>0){
+                 
+                 	 }else {
+                 	  $ionicPopup.alert({
 		  title: 'Please Sync Branch Info',
 		  //template:'From date'
-		  })
-  }
-  //serach
+		  })	
+                 	 }
+                 })
+            });
+  //End sync alert
    	
 			  $scope.btnSyncBranchLocation1 = function() {
 			  	alert("show");
