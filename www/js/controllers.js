@@ -41,6 +41,38 @@ db.transaction(function(tx) {
                 	$scope.user = { uname:user_id11};
             });
         });
+        
+        //Begin Show Branch Info
+          
+			$rootScope.branChcategories = [];
+	  db.transaction(function(tx) {
+            tx.executeSql("SELECT * from branch_location;", [], function(tx, res) {
+             
+                 var len = res.rows.length;
+                 if(len>0){
+                 	 for (var i = 0; i < len; i++) {
+                 	 //	alert("res.rows.item(0).branch_code: " + res.rows.item(i).branch_code + "Branch Name :"+res.rows.item(i).branch_name);
+                 	 //listItems.push(res.rows.item(i).branch_code);
+                 	  $scope.branChcategories.push({
+                 	  	slno: res.rows.item(i).slno, 
+                 	  	branch_code: res.rows.item(i).branch_code,
+                 	  	branch_name: res.rows.item(i).branch_name,
+                 	  	branch_address: res.rows.item(i).branch_address,
+                 	  	phone: res.rows.item(i).phone,
+                 		 fax: res.rows.item(i).fax
+                 	  });
+                 	  // Make sure to apply scope change so that ng-repeat updates
+        		$scope.$apply();
+                 	//$scope.categories.push({slno: res.rows.item(i).slno, branch_name: res.rows.item(i).branch_name});
+                 	 }
+                 	 	
+                 	 }
+                 })
+            });
+        
+        //End show branch Info
+        
+        
 
       });
     //End sqlite**********************************************************
@@ -502,16 +534,13 @@ $scope.listItems=[];
   //serach
   
   // Begin For sync alert
-   $scope.$apply(function () {
+  
             //$scope.message = "Timeout called!";
             db.transaction(function(tx) {
             tx.executeSql("SELECT * from branch_location;", [], function(tx, res) {
                  var len = res.rows.length;
                  if(len>0){
-                   $ionicPopup.alert({
-		  title: 'Branch already exists',
-		  //template:'From date'
-		  })
+                  
                  	 }else {
                  	  $ionicPopup.alert({
 		  title: 'Please Sync Branch Info',
@@ -520,20 +549,17 @@ $scope.listItems=[];
                  	 }
                  })
             });
-        });
+       
   
   //End sync alert
    	
 			  $scope.btnSyncBranchLocation1 = function() {
-			  	alert("show");
-			$scope.branChcategories = [];
-  db.transaction(function(tx) {
+			  //	alert("show");
+			  
+			$rootScope.branChcategories = [];
+	  db.transaction(function(tx) {
             tx.executeSql("SELECT * from branch_location;", [], function(tx, res) {
-              // alert("res.rows.length: " + res.rows.length + " -- should be 1");
-                //alert("res.rows.item(0).branch_code: " + res.rows.item(0).branch_code + " -- should be 100");
-               // var branch_code=res.rows.item(0).branch_code;
-                //alert("branch_code :"+branch_code);
-                 //var listItems= [];
+             
                  var len = res.rows.length;
                  if(len>0){
                  	 for (var i = 0; i < len; i++) {
@@ -628,7 +654,7 @@ $scope.listItems=[];
 				});   
 				  //End Sink
 			//Being show branch Locations
-				$scope.branChcategories = [];
+				$rootScope.branChcategories = [];
 	 db.transaction(function(tx) {
             tx.executeSql("SELECT * from branch_location;", [], function(tx, res) {
               // alert("res.rows.length: " + res.rows.length + " -- should be 1");
