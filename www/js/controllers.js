@@ -421,22 +421,16 @@ document.addEventListener("deviceready", function() {
 				 if(res.rows.length > 0) {
 				// alert("Found");
 			  $state.go('app.welcome');
-			  tx.executeSql("SELECT user_id from user_info;", [], function(tx, res) {
-               alert("res.rows.length: " + res.rows.length + " -- should be 1");
-                alert("res.rows.item(0).user_id: " + res.rows.item(0).user_id + " -- should be 100");
-            });
+			 
 			  }else{
 			  
 				tx.executeSql("delete from user_info ;", [], function(tx, res) {
-				alert("Deleted");
+			//	alert("Deleted");
 			  
 					tx.executeSql("INSERT INTO user_info (user_id) VALUES (?)", [user.uname], function(tx, res) {
-				 alert("Insert successfully");
+				 //alert("Insert successfully");
 				  $state.go('app.welcome');
-				  tx.executeSql("SELECT user_id from user_info;", [], function(tx, res) {
-               alert("res.rows.length: " + res.rows.length + " -- should be 1");
-                alert("res.rows.item(0).user_id: " + res.rows.item(0).user_id + " -- should be 100");
-            });
+				 
 				}, function(e) {
 				 
 				  alert("ERROR:");
