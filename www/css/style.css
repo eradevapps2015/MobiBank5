@@ -386,10 +386,10 @@ text-align: left;
 
 
 .ac-width-area {
- min-width: 355px; 
+ min-width: 345px; 
 }
 .ac-slno { 
-  min-width: 50px; 
+  min-width: 40px; 
   white-space: normal; 
   line-height:normal;
 }
