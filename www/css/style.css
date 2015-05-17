@@ -368,7 +368,7 @@ color:#000 !important;
 
 .col-right {
   text-align: right;
-  padding: 3px 5px 3px 5px !important;
+  padding: 1px 5px 1px 5px !important;
 }
 .col-center {
   text-align: center;
@@ -381,7 +381,7 @@ color:#000 !important;
 
 .col-left {
 text-align: left;
-  padding: 3px 5px 3px 5px !important;
+  padding: 1px 5px 1px 5px !important;
 }
 
 
@@ -414,7 +414,7 @@ min-width: 150px;
 .row-item {
   padding: 0px !important;
   margin-left: 0 !important;
-  font-size: 12px !important;
+  font-size: 16px !important;
 
 }
 
